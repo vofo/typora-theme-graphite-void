@@ -1,0 +1,1103 @@
+/* ============================================================
+   GRAPHITE VOID v3 — full Typora theme (built on the Night skeleton)
+   Neutral near-black bg (#111112, L*≈5) + dimmed gray text
+   (#CFCFCC, 12.1:1 / APCA Lc 77) + muted steel-blue accents.
+   v3: serif prose (Charter) · sans structure (SF Pro headings) ·
+   mono code (JetBrains Mono) on a centered 40–42rem column;
+   Night's dark code-block/source-mode imports retained.
+   Type system lives at the BOTTOM of this file — swap or delete
+   that one section to change fonts.
+   Requires the built-in `night` folder next to this file
+   (ships with Typora — no action needed).
+   ============================================================ */
+@import "night/mermaid.dark.css";
+@import "night/codeblock.dark.css";
+@import "night/sourcemode.dark.css";
+
+:root {
+    --bg-color: #111112;              /* neutral near-black, L*≈5 */
+    --side-bar-bg-color: #0C0C0D;     /* sidebar darker than editor -> text stays the brightest surface */
+    --text-color: #CFCFCC;            /* dimmed neutral gray — 12.1:1 / APCA Lc 77 */
+
+    --md-char-color: #747472;         /* markdown syntax chars — 4.0:1, recedes */
+    --meta-content-color: #93ABBC;    /* link URLs, image paths — 7.9:1 */
+
+    --select-text-bg-color: #3E6C93;  /* solid steel-blue selection */
+    --search-select-bg-color: #3E6C93;
+
+    --item-hover-bg-color: #2C2C30;
+    --item-hover-text-color: #E5E5E2;
+    --control-text-color: #9B9B9F;
+    --control-text-hover-color: #E5E5E2;
+    --window-border: 1px solid #232326;
+
+    --active-file-bg-color: #222225;
+    --active-file-text-color: #E5E5E2;
+    --active-file-border-color: #4C7EA8;
+
+    --primary-color: #3E6C93;         /* muted steel blue */
+    --primary-btn-border-color: #2B4D6B;
+    --primary-btn-text-color: #F2F5F7;
+
+    --rawblock-edit-panel-bd: #1D1D1F;
+
+    --monospace: "JetBrains Mono", "SF Mono", Menlo, Consolas, monospace;
+}
+
+html {
+    font-size: 17px;   /* 16 -> 17px: 254-ppi panel + nanotexture diffusion favor a notch larger */
+    -webkit-font-smoothing: antialiased;
+}
+
+html,
+body {
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    background: #111112;
+    background: var(--bg-color);
+    fill: currentColor;
+    line-height: 1.65;   /* ~28px leading at 17px — long-form band 1.5-1.7 */
+}
+
+#write {
+    max-width: 42em;   /* ~714px @17px -> ~75-85 characters/line (readability band 45-90, sweet 66-85) */
+}
+
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 44em;   /* ~748px — modest growth for tables/code */
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 46em;   /* ~782px cap ≈ upper edge of the CPL band; Night's 1200px hits ~110+ CPL */
+	}
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea,
+div.code-tooltip-content {
+    color: #CFCFCC;
+    border-color: transparent;
+}
+
+div.code-tooltip,
+.md-hover-tip .md-arrow:after {
+    background: #1D1D1F;
+}
+
+.native-window #md-notification {
+    border: 1px solid #2C2C30;
+}
+
+.popover.bottom > .arrow:after {
+    border-bottom-color: #1D1D1F;
+}
+
+html,
+body,
+button,
+input,
+select,
+textarea {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "Segoe UI Emoji", sans-serif;
+}
+
+hr {
+    height: 2px;
+    border: 0;
+    margin: 24px 0 !important;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: normal;
+    clear: both;
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+    margin: 0;
+    padding: 0;
+    color: #E5E5E2
+}
+
+h1 {
+    font-size: 2.5rem;
+    /* 36px */
+    line-height: 2.75rem;
+    /* 40px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    letter-spacing: -0.8px;  /* SF Pro is tighter than Lucida Grande */
+}
+
+h2 {
+    font-size: 1.63rem;
+    /* 24px */
+    line-height: 1.875rem;
+    /* 30px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    letter-spacing: -0.3px;
+    font-weight: 600;  /* 700 blooms on dark backgrounds; 600 reads cleaner */
+}
+
+h3 {
+    font-size: 1.17rem;
+    /* 18px */
+    line-height: 1.5rem;
+    /* 24px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    letter-spacing: -0.3px;
+    font-weight: 600;  /* 700 blooms on dark backgrounds; 600 reads cleaner */
+}
+
+h4 {
+    font-size: 1.12rem;
+    /* 16px */
+    line-height: 1.375rem;
+    /* 22px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    color: #EDEDEA;
+}
+
+h5 {
+    font-size: 0.97rem;
+    /* 16px */
+    line-height: 1.25rem;
+    /* 22px */
+    margin-bottom: 1.5rem;
+    /* 24px */
+    font-weight: 600;  /* 700 blooms on dark backgrounds; 600 reads cleaner */
+}
+
+h6 {
+    font-size: 0.93rem;
+    /* 16px */
+    line-height: 1rem;
+    /* 16px */
+    margin-bottom: 0.75rem;
+    color: #EDEDEA;
+}
+
+@media (min-width: 980px) {
+    h3.md-focus:before,
+    h4.md-focus:before,
+    h5.md-focus:before,
+    h6.md-focus:before {
+        color: #96969A;
+        border: 1px solid #96969A;
+        border-radius: 3px;
+        position: absolute;
+        left: -1.642857143rem;
+        top: .357142857rem;
+        float: left;
+        font-size: 9px;
+        padding-left: 2px;
+        padding-right: 2px;
+        vertical-align: bottom;
+        font-weight: normal;
+        line-height: normal;
+    }
+
+    h3.md-focus:before {
+        content: 'h3';
+    }
+
+    h4.md-focus:before {
+        content: 'h4';
+    }
+
+    h5.md-focus:before {
+        content: 'h5';
+        top: 0px;
+    }
+
+    h6.md-focus:before {
+        content: 'h6';
+        top: 0px;
+    }
+}
+
+a {
+    text-decoration: none;
+    outline: 0;
+}
+
+a:hover {
+    outline: 0;
+}
+
+a:focus {
+    outline: thin dotted;
+}
+
+sup.md-footnote {
+    background-color: #303034;
+    color: #96969A;
+}
+
+p {
+    -ms-word-wrap: break-word;
+    word-wrap: break-word;
+}
+
+p,
+ul,
+dd,
+ol,
+hr,
+address,
+pre,
+table,
+iframe,
+.wp-caption,
+.wp-audio-shortcode,
+.wp-video-shortcode {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    /* 24px */
+}
+
+audio:not([controls]) {
+    display: none;
+}
+
+[hidden] {
+    display: none;
+}
+
+::-moz-selection {
+    background: #3E6C93;
+    color: #F2F5F7;
+    text-shadow: none;
+}
+
+*.in-text-selection,
+::selection {
+    background: #3E6C93;
+    color: #F2F5F7;
+    text-shadow: none;
+}
+
+ul,
+ol {
+    padding: 0 0 0 1.875rem;
+    /* 30px */
+}
+
+ol {
+    list-style: decimal;
+}
+
+ul ul,
+ol ol,
+ul ol,
+ol ul {
+    margin: 0;
+}
+
+b,
+th,
+dt,
+strong {
+    font-weight: 600;  /* 700 blooms on dark backgrounds; 600 reads cleaner */
+}
+
+i,
+em,
+dfn,
+cite {
+    font-style: italic;
+}
+
+blockquote {
+    padding-left: 1.875rem;
+    margin: 0 0 1.875rem 1.875rem;
+    border-left: solid 2px #2E2E31;
+    padding-left: 30px;
+    margin-top: 35px;
+}
+
+pre,
+code,
+kbd,
+tt,
+var {
+    font-size: 0.875em;
+    font-family: var(--monospace);
+}
+
+code,
+tt,
+var {
+    background: rgba(255, 255, 255, 0.06);
+}
+
+kbd {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #F2F5F7;
+    background-color: #1D1D1F;
+    border-radius: 3px;
+    box-shadow: inset 0 -1px 0 rgba(0,0,0,.25);
+}
+
+pre.md-fences {
+    padding: 10px 10px 10px 30px;
+    margin-bottom: 20px;
+    background: #1D1D1F;
+}
+
+.CodeMirror-gutters {
+    background: #1D1D1F;
+    border-right: 1px solid transparent;
+}
+
+.enable-diagrams pre.md-fences[lang="sequence"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="flow"] .code-tooltip,
+.enable-diagrams pre.md-fences[lang="mermaid"] .code-tooltip {
+    bottom: -2.2em;
+    right: 4px;
+}
+
+code,
+kbd,
+tt,
+var {
+    padding: 2px 5px;
+}
+
+table {
+    max-width: 100%;
+    width: 100%;
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+th,
+td {
+    padding: 5px 10px;
+    vertical-align: top;
+}
+
+a {
+    -webkit-transition: all .2s ease-in-out;
+    transition: all .2s ease-in-out;
+}
+
+hr {
+    background: #2E2E31;
+    /* variable */
+}
+
+h1 {
+    margin-top: 2em;
+}
+
+a {
+    color: #9FC1DC;
+    text-decoration: underline;
+}
+
+a:hover {
+    color: #F2F5F7;
+}
+
+.md-inline-math script {
+    color: #81B1DB;
+}
+
+b,
+th,
+dt,
+strong {
+    color: #E5E5E2;
+    /* variable */
+}
+
+mark {
+    background: rgba(199, 140, 60, 0.38);
+}
+
+blockquote {
+    color: #A0A0A4;
+}
+
+table a {
+    color: #E5E5E2;
+    /* variable */
+}
+
+th,
+td {
+    border: solid 1px #2E2E31;
+    /* variable */
+}
+
+.task-list {
+    padding-left: 0;
+}
+
+.md-task-list-item {
+    padding-left: 1.25rem;
+}
+
+.md-task-list-item > input {
+    top: auto;
+}
+
+.md-task-list-item > input:before {
+    content: "";
+    display: inline-block;
+    width: 0.875rem;
+    height: 0.875rem;
+    vertical-align: middle;
+    text-align: center;
+    border: 1px solid #CFCFCC;
+    background-color: #111112;
+    margin-top: -0.4rem;
+}
+
+.md-task-list-item > input:checked:before,
+.md-task-list-item > input[checked]:before {
+    content: '\221A';
+    /*◘*/
+    font-size: 0.625rem;
+    line-height: 0.625rem;
+    color: #E5E5E2;
+}
+
+/** quick open **/
+.auto-suggest-container {
+    border: 0px;
+    background-color: #2A2A2E;
+}
+
+#typora-quick-open {
+    background-color: #2A2A2E;
+}
+
+#typora-quick-open input{
+    background-color: #2A2A2E;
+    border: 0;
+    border-bottom: 1px solid #3A3A3E;
+}
+
+.typora-quick-open-item {
+    background-color: inherit;
+    color: inherit;
+}
+
+.typora-quick-open-item.active,
+.typora-quick-open-item:hover {
+    background-color: #4C7EA8;
+    color: #EDEDEA;
+}
+
+.typora-quick-open-item:hover {
+    background-color: rgba(76, 126, 168, 0.8);
+}
+
+.typora-search-spinner > div {
+  background-color: #F2F5F7;
+}
+
+#write pre.md-meta-block {
+    border-bottom: 1px dashed #5F5F63;
+    background: transparent;
+    padding-bottom: 0.6em;
+    line-height: 1.6em;
+}
+
+.btn,
+.btn .btn-default {
+    background: transparent;
+    color: #CFCFCC;
+}
+
+.ty-table-edit {
+    border-top: 1px solid #3A3A3E;
+    background-color: #111112;
+}
+
+.popover-title {
+    background: transparent;
+}
+
+.md-image>.md-meta {
+    color: #8E8E92;
+    background: transparent;
+}
+
+.md-expand.md-image>.md-meta {
+    color: #C6C6C3;
+}
+
+#write>h3:before,
+#write>h4:before,
+#write>h5:before,
+#write>h6:before {
+    border: none;
+    border-radius: 0px;
+    color: #747472;
+    text-decoration: underline;
+    left: -1.4rem;
+    top: 0.2rem;
+}
+
+#write>h3.md-focus:before {
+    top: 2px;
+}
+
+#write>h4.md-focus:before {
+    top: 2px;
+}
+
+.md-toc-item {
+    color: #9FB9CC;
+}
+
+#write div.md-toc-tooltip {
+    background-color: #111112;
+}
+
+.dropdown-menu .btn:hover,
+.dropdown-menu .btn:focus,
+.md-toc .btn:hover,
+.md-toc .btn:focus {
+    color: #EDEDEA;
+    background: #0A0A0B;
+}
+
+#toc-dropmenu {
+    background: rgba(20, 20, 22, 0.93);
+    border: 1px solid rgba(253, 253, 253, 0.15);
+}
+
+#toc-dropmenu .divider {
+    background-color: #5F5F63;
+}
+
+.outline-expander:before {
+    top: 2px;
+}
+
+#typora-sidebar {
+    box-shadow: none;
+    border-right: 1px dashed;
+    border-right: none;
+}
+
+.sidebar-tabs {
+    border-bottom:0;
+}
+
+#typora-sidebar:hover .outline-title-wrapper {
+    border-left: 1px dashed;
+}
+
+.outline-title-wrapper .btn {
+    color: inherit;
+}
+
+.outline-item:hover {
+    border-color: #111112;
+    background-color: #111112;
+    color: #EDEDEA;
+}
+
+h1.md-focus .md-attr,
+h2.md-focus .md-attr,
+h3.md-focus .md-attr,
+h4.md-focus .md-attr,
+h5.md-focus .md-attr,
+h6.md-focus .md-attr,
+.md-header-span .md-attr {
+    color: #8C8E92;
+    display: inline;
+}
+
+.md-comment {
+    color: #6FA0D8;
+    opacity: 0.8;
+}
+
+.md-inline-math svg {
+    color: #CFCFCC;
+}
+
+#math-inline-preview .md-arrow:after {
+    background: #0A0A0B;
+}
+
+.modal-content {
+    background: var(--bg-color);
+    border: 0;
+}
+
+.modal-title {
+    font-size: 1.5em;
+}
+
+.modal-content input {
+    background-color: rgba(26, 21, 21, 0.51);
+    color: #EDEDEA;
+}
+
+.modal-content .input-group-addon {
+    color: #EDEDEA;
+}
+
+.modal-backdrop {
+    background-color: rgba(4, 4, 5, 0.7);
+}
+
+.modal-content .btn-primary {
+    border-color: var(--primary-color);
+}
+
+.md-table-resize-popover {
+    background-color: #1D1D1F;
+}
+
+.form-inline .input-group .input-group-addon {
+    color: #EDEDEA;
+}
+
+#md-searchpanel {
+    border-bottom: 1px dashed #3A3A3E;
+}
+
+/** UI for electron */
+
+.context-menu,
+#spell-check-panel,
+#footer-word-count-info {
+    background-color: #232326;
+}
+
+.context-menu.dropdown-menu .divider,
+.dropdown-menu .divider {
+    background-color: #48484C;
+    opacity: 1;
+}
+
+footer {
+    color: inherit;
+}
+
+@media (max-width: 1000px) {
+    footer {
+        border-top: none;
+    }
+    footer:hover {
+        color: inherit;
+    }
+}
+
+#file-info-file-path .file-info-field-value:hover {
+    background-color: #303034;
+    color: #E5E5E2;
+}
+
+.megamenu-content,
+.megamenu-opened header {
+    background: var(--bg-color);
+}
+
+.megamenu-menu-panel h2,
+.megamenu-menu-panel h1,
+.long-btn {
+    color: inherit;
+}
+
+.megamenu-menu-panel input[type='text'] {
+    background: inherit;
+    border: 0;
+    border-bottom: 1px solid;
+}
+
+#recent-file-panel-action-btn {
+    background: inherit;
+    border: 1px #3A3A3E solid;
+}
+
+.megamenu-menu-panel .dropdown-menu > li > a {
+    color: inherit;
+    background-color: #19191B;
+    text-decoration: none;
+}
+
+.megamenu-menu-panel table td:nth-child(1) {
+    color: inherit;
+    font-weight: 600;  /* 700 blooms on dark backgrounds; 600 reads cleaner */
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(1) {
+    color: #EDEDEA;
+}
+
+.modal-footer .btn-default, 
+.modal-footer .btn-primary,
+.modal-footer .btn-default:not(:hover) {
+    border: 1px solid;
+    border-color: transparent;
+}
+
+.btn-primary {
+    color: #EDEDEA;
+}
+
+.btn-default:hover, .btn-default:focus, .btn-default.focus, .btn-default:active, .btn-default.active, .open > .dropdown-toggle.btn-default {
+    color: #EDEDEA;
+    border: 1px solid #96969A;
+    background-color: inherit;
+}
+
+.modal-header {
+    border-bottom: 0;
+}
+
+.modal-footer {
+    border-top: 0;
+}
+
+#recent-file-panel tbody tr:nth-child(2n-1) {
+    background-color: transparent !important;
+}
+
+.megamenu-menu-panel tbody tr:hover td:nth-child(2) {
+    color: inherit;
+}
+
+.megamenu-menu-panel .btn {
+    border: 1px solid #D4D4D1;
+    background: transparent;
+}
+
+.mouse-hover .toolbar-icon.btn:hover,
+#w-full.mouse-hover,
+#w-pin.mouse-hover {
+    background-color: inherit;
+}
+
+.typora-node::-webkit-scrollbar {
+    width: 5px;
+}
+
+.typora-node::-webkit-scrollbar-thumb:vertical {
+    background: rgba(250, 250, 250, 0.3);
+}
+
+.typora-node::-webkit-scrollbar-thumb:vertical:active {
+    background: rgba(250, 250, 250, 0.5);
+}
+
+#w-unpin {
+    background-color: #3E6C93;
+}
+
+#top-titlebar, #top-titlebar * {
+    color: var(--item-hover-text-color);
+}
+
+.typora-sourceview-on #toggle-sourceview-btn,
+#footer-word-count:hover,
+.ty-show-word-count #footer-word-count {
+    background: #1D1D1F;
+}
+
+#toggle-sourceview-btn:hover {
+    color: #D4D4D1;
+    background: #1D1D1F;
+}
+
+/** focus mode */
+.on-focus-mode .md-end-block:not(.md-focus):not(.md-focus-container) * {
+    color: #6E6E6C !important;
+}
+
+.on-focus-mode .md-end-block:not(.md-focus) img,
+.on-focus-mode .md-task-list-item:not(.md-focus-container)>input {
+    opacity: #6E6E6C !important;
+}
+
+.on-focus-mode li[cid]:not(.md-focus-container){
+    color: #6E6E6C;
+}
+
+.on-focus-mode .md-fences.md-focus .CodeMirror-code>*:not(.CodeMirror-activeline) *,
+.on-focus-mode .CodeMirror.cm-s-inner:not(.CodeMirror-focused) * {
+    color: #6E6E6C !important;
+}
+
+.on-focus-mode .md-focus,
+.on-focus-mode .md-focus-container {
+    color: #F2F5F7;
+}
+
+.on-focus-mode #typora-source .CodeMirror-code>*:not(.CodeMirror-activeline) * {
+    color: #6E6E6C !important;
+}
+
+
+/*diagrams*/
+#write .md-focus .md-diagram-panel {
+    border: 1px solid #96969A;
+    margin-left: -1px;
+    width: calc(100% + 2px);
+}
+
+/*diagrams*/
+#write .md-focus.md-fences-with-lineno .md-diagram-panel {
+    margin-left: auto;
+}
+
+.md-diagram-panel-error {
+    color: #f1908e;
+}
+
+.active-tab-files #info-panel-tab-file,
+.active-tab-files #info-panel-tab-file:hover,
+.active-tab-outline #info-panel-tab-outline,
+.active-tab-outline #info-panel-tab-outline:hover {
+    color: #D4D4D1;
+}
+
+.sidebar-footer-item:hover,
+.footer-item:hover {
+    background: inherit;
+    color: #EDEDEA;
+}
+
+.ty-side-sort-btn.active,
+.ty-side-sort-btn:hover,
+.selected-folder-menu-item a:after {
+    color: #EDEDEA;
+}
+
+#sidebar-files-menu {
+    border:solid 1px;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.79);
+    background-color: var(--bg-color);
+}
+
+.file-list-item {
+    border-bottom:none;
+}
+
+.file-list-item-summary {
+    opacity: 1;
+}
+
+.file-list-item.active:first-child {
+    border-top: none;
+}
+
+.file-node-background {
+    height: 32px;
+}
+
+.file-library-node.active>.file-node-content,
+.file-list-item.active {
+    color: #EDEDEA;
+    color: var(--active-file-text-color);
+}
+
+.file-library-node.active>.file-node-background{
+    background-color: #222225;
+    background-color: var(--active-file-bg-color);
+}
+.file-list-item.active {
+    background-color: #222225;
+    background-color: var(--active-file-bg-color);
+}
+
+#ty-tooltip {
+    background-color: #0A0A0B;
+    color: #D4D4D1;
+}
+
+.md-task-list-item>input {
+    margin-left: -1.3em;
+    margin-top: 0.3rem;
+    -webkit-appearance: none;
+}
+
+.md-mathjax-midline {
+    background-color: #333338;
+    border-bottom: none;
+}
+
+footer.ty-footer {
+    border-color: #3C3C40;
+}
+
+.ty-preferences .btn-default {
+    background: transparent;
+}
+.ty-preferences .btn-default:hover {
+    background: #333338;
+}
+
+.ty-preferences select {
+    border: 1px solid #5F5F63;
+    height: 21px;
+}
+
+.ty-preferences .nav-group-item.active,
+.export-item.active,
+.export-items-list-control,
+.export-detail {
+    background: var(--item-hover-bg-color);
+}
+
+.ty-preferences input[type="search"] {
+    border-color: #1D1D1F;
+    background: #1D1D1F;
+    line-height: 22px;
+    border-radius: 6px;
+    color: #EDEDEA;
+}
+
+.ty-preferences input[type="search"]:focus {
+    box-shadow: none;
+}
+
+[data-is-directory="true"] .file-node-content {
+    margin-bottom: 0;
+}
+
+.file-node-title {
+    line-height: 22px;
+}
+
+.html-for-mac .file-node-open-state, .html-for-mac .file-node-icon {
+    line-height: 26px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgba(230, 230, 230, 0.30);
+}
+
+::-webkit-scrollbar-thumb:active {
+    background: rgba(230, 230, 230, 0.50);
+}
+
+#typora-sidebar:hover div.sidebar-content-content::-webkit-scrollbar-thumb:horizontal {
+    background: rgba(230, 230, 230, 0.30);
+}
+
+.nav-group-item:active {
+    background-color: #2E2E31 !important;
+}
+
+.md-search-hit {
+    background: rgba(199, 140, 60, 0.81);
+    color: #D4D4D1;
+}
+
+.md-search-hit * {
+    color: #D4D4D1;
+}
+
+#md-searchpanel input {
+    color: #EDEDEA;
+}
+
+.modal-backdrop.in {
+    opacity: 1;
+    backdrop-filter: blur(1px);
+}
+
+.clear-btn-icon {
+    top: 8px;
+}
+
+.ty-editor-toolbar {
+    background: #19191B;
+    border: 1px solid rgb(127 127 127 / 50%);
+    filter: drop-shadow(0 1px 2px rgb(0 0 0 / 30%));
+    --text-color: #E5E5E2;
+}
+
+/* try fix https://github.com/typora/typora-issues/issues/5253 */
+.file-node-expanded>.file-node-children {
+    display: grid;
+  }
+
+.md-alert-text-note {
+    color: rgb(47, 129, 247);
+}
+.md-alert-text-important {
+    color: rgb(163, 113, 247);
+}
+.md-alert-text-warning {
+    color:  rgb(210, 153, 34);
+}
+
+
+/* === Layout & typography — MacBook Pro 16" nanotexture =====================
+   Column: 42em ≈ 714px at 17px ≈ 75–85 characters per line (research band
+   45–90 CPL, sweet spot 66–85 — Butterick, UXPin). Night's stock column
+   (914→1200px) reaches ~110+ CPL full-screen on a 16" (1728pt) — too wide
+   to track line returns comfortably. Typora centers #write automatically
+   once max-width is set; margin made explicit below for robustness.
+   -webkit-font-smoothing: antialiased (kept from Night) compensates for
+   macOS rendering light-on-dark text artificially bold.
+   ========================================================================= */
+#write {
+    margin: 0 auto;              /* explicit centering */
+    padding-bottom: 8rem;        /* breathing room under the last line */
+}
+
+
+/* === TYPE SYSTEM v3 — serif prose · sans structure · mono code ==========
+   Body: Charter (Matthew Carter; ships preinstalled with macOS) —
+   compact width, low stroke contrast, sturdy serifs: the profile type
+   designers recommend for light-on-dark, where thin-thick modulation
+   turns shimmery. (Georgia is explicitly NOT recommended for dark mode
+   — serifs too prominent — and it is wide, so it is not in this stack.)
+   Headings stay SF Pro sans at 600: instant structural anchors while
+   editing markdown in detail. Code stays JetBrains Mono.
+
+   Alternates — put your favorite FIRST in the font-family list:
+     "Iowan Old Style"   warmer, bookish (Apple Books' reading face;
+                         praised for dark mode; document-support font on
+                         recent macOS — used automatically if resolvable)
+     "Literata"          free download from Google Fonts — e-reading
+                         serif designed for screens, excellent on dark
+   Prefer all-sans editing? Delete this whole section — the theme falls
+   back to SF Pro 17px on the 42–46em column defined above.
+   ======================================================================= */
+#write {
+    font-family: "Charter", "Iowan Old Style", "Literata", "Source Serif 4", serif;
+    font-size: 1.06rem;     /* ≈18px — serifs read a touch smaller than sans at equal nominal size */
+    line-height: 1.7;       /* a notch more leading suits serif texture on dark */
+    max-width: 40rem;       /* ≈680px → ~80–84 CPL in compact Charter (rem: immune to the 18px bump) */
+}
+
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6 {
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+}
+
+@media only screen and (min-width: 1400px) {
+    #write { max-width: 41rem; }
+}
+
+@media only screen and (min-width: 1800px) {
+    #write { max-width: 42rem; }
+}
